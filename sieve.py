@@ -1,0 +1,50 @@
+# Python program to print all primes smaller than or equal to 
+# n using Sieve of Eratosthenes 
+import sys
+def SieveOfEratosthenes(n): 
+      
+    # Create a boolean array "prime[0..n]" and initialize 
+    #  all entries it as true. A value in prime[i] will 
+    # finally be false if i is Not a prime, else true. 
+    prime = [True for i in range(n+1)] 
+    p = 2
+    while (p * p <= n): 
+          
+        # If prime[p] is not changed, then it is a prime 
+        if (prime[p] == True): 
+              
+            # Update all multiples of p 
+            for i in range(p * p, n+1, p): 
+                prime[i] = False
+        p += 1
+      
+    # Print all prime numbers 
+    for p in range(2, n+1): 
+        if prime[p]: 
+            yield p 
+
+def sum_digits(number):
+    result = sum(int(digit) for digit in str(number))
+    if len(str(result)) == 1:
+        return result
+    else:
+        return sum_digits(result)
+
+def csv_line(prime):
+    return str(prime) + "," + str(sum_digits(prime)) +"\n"
+
+def primes_as_csv(n):
+    primeGenerator = SieveOfEratosthenes(n)
+    yield csv_line(next(primeGenerator))
+    for prime in primeGenerator:
+        yield csv_line(prime)
+        
+# driver program 
+if __name__=='__main__': 
+    if len(sys.argv) != 2:
+        print("usage: sieve <n>")
+        sys.exit(-1)
+    n = int(sys.argv[1])
+    f= open("primes.csv","w")
+    for line in primes_as_csv(n):
+        f.write(line)
