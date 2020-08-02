@@ -1,3 +1,5 @@
+# SieveOfErastothenes taken from geeksforgeeks.com
+
 # Python program to print all primes smaller than or equal to 
 # n using Sieve of Eratosthenes 
 import sys
@@ -25,18 +27,18 @@ def SieveOfEratosthenes(n):
 
 def sum_digits(number):
     result = sum(int(digit) for digit in str(number))
+    # exit condition
     if len(str(result)) == 1:
         return result
     else:
+    # recursively call sum_digits
         return sum_digits(result)
 
 def csv_line(prime):
     return str(prime) + "," + str(sum_digits(prime)) +"\n"
 
 def primes_as_csv(n):
-    primeGenerator = SieveOfEratosthenes(n)
-    yield csv_line(next(primeGenerator))
-    for prime in primeGenerator:
+    for prime in SieveOfEratosthenes(n):
         yield csv_line(prime)
         
 # driver program 
