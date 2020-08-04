@@ -4,3 +4,17 @@ Prime numbers are cool and unpredictable.
 I'm not good at math, it goes over my head most of the time. 
 
 But My friend [Sai Kiran Reddy Lenkala](https://github.com/100193kiran) is , I'll try to visualise his experiments on prime numbers in this repo and maybe learn something along the way
+
+## Requirements
+* Python
+* Gnuplot
+
+## Generate primes.csv
+change the argument to generate primes till that number
+```python
+python sieve.py 10000
+```
+## Plot primes.csv
+```bash
+gnuplot -p primes.gnuplot
+```

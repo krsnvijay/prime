@@ -35,7 +35,9 @@ def sum_digits(number):
         return sum_digits(result)
 
 def csv_line(prime):
-    return str(prime) + "," + str(sum_digits(prime)) +"\n"
+    x = str(prime)
+    y = str(sum_digits(prime))
+    return x + "," + y +"\n"
 
 def primes_as_csv(n):
     for prime in SieveOfEratosthenes(n):
