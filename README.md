@@ -25,7 +25,7 @@ python sieve.py 10000
 gnuplot -p primes.gnuplot
 ```
 
-## Latest plot
+## Plot 1
 
 This is a polar plot `(r,Θ)` with `r = prime number` and `Θ = (sum of its digits / 9) * 360`
 
@@ -40,3 +40,13 @@ sum of its digits = 7 + 3 => 10 = 1 + 0 => 1
 ```
 
 ![Polar Plot](output/plot.svg)
+
+## Reference Plot
+
+Watch this video from [3Blue1Brown](https://www.youtube.com/channel/UCYO_jab_esuFRV4b17AJtAw) to know more about patterns with prime numbers
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/EK32jo7i5LQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+This is a polar plot `(r,Θ)` with `r = prime number` and `Θ = prime number * 360`, recreated by me from the video.
+
+![Spiral Polar Plot](output/plot-prime-prime.svg)
