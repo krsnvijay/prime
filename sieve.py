@@ -1,29 +1,33 @@
 # SieveOfErastothenes taken from geeksforgeeks.com
 
-# Python program to print all primes smaller than or equal to 
-# n using Sieve of Eratosthenes 
+# Python program to print all primes smaller than or equal to
+# n using Sieve of Eratosthenes
 import sys
-def SieveOfEratosthenes(n): 
-      
-    # Create a boolean array "prime[0..n]" and initialize 
-    #  all entries it as true. A value in prime[i] will 
-    # finally be false if i is Not a prime, else true. 
-    prime = [True for i in range(n+1)] 
+from math import pi
+
+
+def SieveOfEratosthenes(n):
+
+    # Create a boolean array "prime[0..n]" and initialize
+    #  all entries it as true. A value in prime[i] will
+    # finally be false if i is Not a prime, else true.
+    prime = [True for i in range(n+1)]
     p = 2
-    while (p * p <= n): 
-          
-        # If prime[p] is not changed, then it is a prime 
-        if (prime[p] == True): 
-              
-            # Update all multiples of p 
-            for i in range(p * p, n+1, p): 
+    while (p * p <= n):
+
+        # If prime[p] is not changed, then it is a prime
+        if (prime[p] == True):
+
+            # Update all multiples of p
+            for i in range(p * p, n+1, p):
                 prime[i] = False
         p += 1
-      
-    # Print all prime numbers 
-    for p in range(2, n+1): 
-        if prime[p]: 
-            yield p 
+
+    # Print all prime numbers
+    for p in range(2, n+1):
+        if prime[p]:
+            yield p
+
 
 def sum_digits(number):
     result = sum(int(digit) for digit in str(number))
@@ -31,24 +35,29 @@ def sum_digits(number):
     if len(str(result)) == 1:
         return result
     else:
-    # recursively call sum_digits
+        # recursively call sum_digits
         return sum_digits(result)
+
 
 def csv_line(prime):
     x = str(prime)
     y = str(sum_digits(prime))
-    return x + "," + y +"\n"
+    z = str((sum_digits(prime)/9)*360)
+    data_point = [z, x]
+    return ','.join(data_point) + "\n"
+
 
 def primes_as_csv(n):
     for prime in SieveOfEratosthenes(n):
         yield csv_line(prime)
-        
-# driver program 
-if __name__=='__main__': 
+
+
+# driver program
+if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("usage: sieve <n>")
         sys.exit(-1)
     n = int(sys.argv[1])
-    f= open("primes.csv","w")
+    f = open("primes.csv", "w")
     for line in primes_as_csv(n):
         f.write(line)

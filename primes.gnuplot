@@ -1,3 +1,5 @@
 set datafile separator ','
 set polar
-plot "primes.csv" linetype 7 linecolor 0
+set angle degrees
+set grid polar
+plot "primes.csv" linetype 7
