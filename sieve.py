@@ -32,7 +32,7 @@ def SieveOfEratosthenes(n):
 def sum_digits(number):
     result = sum(int(digit) for digit in str(number))
     # exit condition
-    if len(str(result)) == 1:
+    if result <= 13:
         return result
     else:
         # recursively call sum_digits
@@ -42,8 +42,8 @@ def sum_digits(number):
 def csv_line(prime):
     x = str(prime)
     y = str(sum_digits(prime))
-    z = str((sum_digits(prime)/9)*360)
-    data_point = [z, x]
+    z = str((sum_digits(prime)/13)*360)
+    data_point = [x, y, z]
     return ','.join(data_point) + "\n"
 
 
@@ -54,6 +54,7 @@ def primes_as_csv(n):
 
 # driver program
 if __name__ == '__main__':
+
     if len(sys.argv) != 2:
         print("usage: sieve <n>")
         sys.exit(-1)
