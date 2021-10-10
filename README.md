@@ -10,6 +10,14 @@ But My friend [Sai Kiran Reddy Lenkala](https://github.com/100193kiran) is , I'l
 
 - Python
 - Gnuplot
+- Primesieve
+## Installation
+
+```python
+python -m venv venv
+source venv\Scripts\activate
+pip install -r requirements.txt
+```
 
 ## Generate primes.csv
 
